@@ -7,6 +7,10 @@ class MoviesController < ApplicationController
 
   def show
     @movie = Movie.find(params[:id])
+    movie_details_service = MovieDetails.new(@movie.title)
+    details = movie_details_service.details
+    @poster = movie_details_service.poster(details['data']['attributes']['poster'])
+    @movie_details = details['data']['attributes']
   end
 
   def send_info

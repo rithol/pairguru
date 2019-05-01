@@ -11,6 +11,7 @@ gem "jquery-rails"
 gem "sass-rails"
 gem "sqlite3"
 gem "uglifier"
+gem "httparty"
 
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", ">= 1.1.0", require: false
@@ -24,6 +25,7 @@ group :development do
   gem "rails-erd"
   gem "spring"
   gem "spring-commands-rspec"
+  gem "byebug"
 end
 
 group :development, :test do
