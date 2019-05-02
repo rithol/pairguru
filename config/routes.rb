@@ -16,6 +16,7 @@ Rails.application.routes.draw do
       get :export
     end
   end
+  resources :top_commenters, only: :index
 
   namespace :api do
     namespace :v1 do
