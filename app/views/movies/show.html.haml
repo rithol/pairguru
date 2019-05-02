@@ -3,7 +3,7 @@
   .col-md-2
     %img.img-rounded{ src: @poster, class: 'poster' }
   .col-md-10
-    .jumbotron{class: 'd-inline'}
+    .jumbotron
       %h4
         Rating:
         = @movie_details['rating']
@@ -12,3 +12,14 @@
         = @movie_details['plot']
     - if user_signed_in?
       %p= link_to 'Email me details about this movie', send_info_movie_path(@movie), class: 'btn btn-sm btn-default'
+- if user_signed_in?
+  %row
+    .col-md-8.col-md-offset-2
+      %h4.text-left Add comment
+      = render 'comments/form'
+- if @movie.comments.count > 0
+  %row
+    .col-md-8.col-md-offset-2
+      %h4.text-left Comments:
+      - @movie.comments.reject(&:new_record?).each do |comment|
+        = render 'comments/comment', comment: comment
